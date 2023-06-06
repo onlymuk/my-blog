@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import MainPage from "./components/MainPage";
+import TechPage from "./components/TechPage";
+import BlogPage from "./components/BlogPage";
+import JavascriptPage from "./components/JavascriptPage";
+import ReactPage from "./components/ReactPage";
+import ReactDocPage from "./components/ReactDocPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/"} element={<MainPage />}></Route>
+        <Route path={"/tech"} element={<TechPage />}>
+          <Route path="javascript" element={<JavascriptPage />}></Route>
+          <Route path="react" element={<ReactPage />}></Route>
+          <Route path="react/:docId" element={<ReactDocPage />}></Route>
+        </Route>
+        <Route path={"/blog"} element={<BlogPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
